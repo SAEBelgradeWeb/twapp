@@ -21,6 +21,7 @@ class TweetsRepository implements EntriesInterface {
 
         $request = $twitter_client->get('search/tweets.json');
         $request->getQuery()->set('q', $q);
+        $request->getQuery()->set('exclude', 'retweets');
         $response = $request->send();
         $tweets = json_decode($response->getBody());
         return $tweets->statuses;

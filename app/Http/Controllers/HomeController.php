@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 
+use App\LatestTweets;
 use App\Repositories\EntriesInterface;
 use Illuminate\Http\Request;
 use App\Tweet;
-
+use Illuminate\Support\Facades\Artisan;
 
 
 class HomeController extends Controller {
@@ -15,10 +16,17 @@ class HomeController extends Controller {
         $this->entriesRepo = $entriesInterface;
     }
 
-	public function index()
+	public function index($q)
 	{
-        $q = "karleusa";
-        $tweets = $this->entriesRepo->getLastEntries($q);
+
+
+        $tweetsObj = LatestTweets::where('keyword' , $q)->first();
+        if (!$tweetsObj) {
+            Artisan::call('twapp:fetch', array('--query' =>  $q));
+        }
+        $tweetsObj = LatestTweets::where('keyword' , $q)->first();
+        $tweets = json_decode($tweetsObj->entries);
+
 		return view('home', compact('tweets'));
 	}
 
