@@ -1,0 +1,87 @@
+.header-logo{
+	background-color: #1185B4;
+	
+}
+html{
+	height: 100%;
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+	background: rgba(226,235,240,1);
+background: -moz-linear-gradient(top, rgba(226,235,240,1) 0%, rgba(192,222,237,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,235,240,1)), color-stop(100%, rgba(192,222,237,1)));
+background: -webkit-linear-gradient(top, rgba(226,235,240,1) 0%, rgba(192,222,237,1) 100%);
+background: -o-linear-gradient(top, rgba(226,235,240,1) 0%, rgba(192,222,237,1) 100%);
+background: -ms-linear-gradient(top, rgba(226,235,240,1) 0%, rgba(192,222,237,1) 100%);
+background: linear-gradient(to bottom, rgba(226,235,240,1) 0%, rgba(192,222,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2ebf0', endColorstr='#c0deed', GradientType=0 );
+}
+
+.za-tweet{
+	padding: 20px 20px;
+	width: 100%;
+	/*background-color: red;*/
+	z-index: 3;
+	background-color: #fff;
+    min-height: 80px;
+}
+.ikonice{
+	position: absolute;
+	width: 100px;
+	/*top: 10px;*/
+	top: calc(50% - 40px);
+}
+.tweet-container{
+	position: relative;
+	/*background-color: red;*/
+	margin-top: 30px;
+	background-color: #fff;
+}
+.good{
+	/*background-color: green;*/
+	right: 100px;
+	right: 100px;
+}
+.bad{
+	/*background-color: orange;*/
+	right: 0;
+	right: 10px;
+}
+.ikonice img{
+	width: 80px;
+	height: 80px;
+	z-index: 1;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+	color: rgb(17, 133, 180);
+	background-color: #FFF;
+	font-weight: bold;
+}
+
+.navbar-nav>li>a{
+	padding: 10px; 
+	border-radius: 10px;
+	margin-right: 15px;
+}
+
+.navbar-default .navbar-nav>li>a{
+color: #FFF;
+	
+}
+
+.navContainer{
+margin: -40px 0 0 40px;
+}
+
+.navbar-default{
+background-color: transparent;
+border-color: transparent;
+border: none;	
+}
+
+img{
+	opacity: 0.6;
+}
+

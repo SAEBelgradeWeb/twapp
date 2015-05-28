@@ -6,6 +6,7 @@ use App\Repositories\EntriesInterface;
 use Illuminate\Http\Request;
 use App\Tweet;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Input;
 
 
 class HomeController extends Controller {
@@ -29,7 +30,40 @@ class HomeController extends Controller {
 
 		return view('home', compact('tweets'));
 	}
+    public function search()
+    {
+        $query=Input::get('query');
 
+        $tweetsObj = LatestTweets::where('keyword' , $query)->first();
+        if (!$tweetsObj) {
+            Artisan::call('twapp:fetch', array('--query' =>  $query));
+        }
+        $tweetsObj = LatestTweets::where('keyword' , $query)->first();
+        $tweets = json_decode($tweetsObj->entries);
+
+        return view('search', compact('tweets'));
+    }
+    public function nav($q)
+    {
+
+
+        $tweetsObj = LatestTweets::where('keyword' , $q)->first();
+        if (!$tweetsObj) {
+            Artisan::call('twapp:fetch', array('--query' =>  $q));
+        }
+        $tweetsObj = LatestTweets::where('keyword' , $q)->first();
+        $tweets = json_decode($tweetsObj->entries);
+
+        return view('search', compact('tweets'));
+    }
+
+    public function goodBad(){
+        $goodTweets = Tweet::orderBy('good')->get();
+        $badTweets = Tweet::orderBy('bad')->get();
+
+        return view('index', compact('goodTweets','badTweets'));
+
+    }
     public function postTweet(Request $request)
     {
 
